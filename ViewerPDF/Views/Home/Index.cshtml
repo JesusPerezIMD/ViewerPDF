@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    string pdfUrl = ViewData["pdfUrl"] as string;
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PDF Viewer</title>
+    <link rel="stylesheet" href="~/lib/pdfjs/web/viewer.css" />
+    <script src="~/lib/pdfjs/build/pdf.js"></script>
+    <script src="~/lib/pdfjs/web/viewer.js"></script>
+</head>
+<body>
+    <div id="viewerContainer">
+        <div id="viewer" class="pdfViewer"></div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            var url = '@Url.Content(pdfUrl)';
+            var pdfjsViewer = '../lib/pdfjs/web/viewer.html';
+            window.open(pdfjsViewer + '?file=' + encodeURIComponent(url), '_self');
+        }
+    </script>
+</body>
+</html>
+
+
+
